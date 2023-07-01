@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oracle Assets</title>
+</head>
+<body>
+    <h1>Oracle Assets - Results</h1>
+    <pre>{{ output }}</pre>
+
+    <a href="{% url 'csv_content' %}" download="output.csv">Download as CSV</a>
+    <a href="{% url 'txt_content' %}" download="output.txt">Download as Text</a>
+    
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oracle Current State</title>
+</head>
+<body>
+    <h1>Oracle Current State</h1>
+    <form method="post" action="{% url 'oracle_state' %}">
+        {% csrf_token %}
+        <label for="host">Database Host:</label>
+        <input type="text" name="host" id="host" required><br>
+
+        <label for="port">Database Port:</label>
+        <input type="text" name="port" id="port" required><br>
+
+        <label for="service_name">Database Service Name:</label>
+        <input type="text" name="service_name" id="service_name" required><br>
+
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br>
+        <input type="submit" value="Get Current State">
+    </form>
+</body>
+</html>
+
+
+

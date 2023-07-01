@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oracle Current State</title>
+    <style>
+        .banner {
+            background-color: #f0f0f0;
+            padding: 7px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .instructions {
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .content-wrapper {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .placard {
+            background-color: #f0f0f0;
+            padding: 10px;
+            flex-basis: 40%;
+            box-sizing: border-box;
+        }
+
+        .placard ul {
+            padding-left: 20px; /* Add left padding to the ul element */
+        }
+
+        .placard ul li {
+            margin-bottom: 5px; /* Adjust the margin-bottom as desired */
+        }
+
+        .form-container {
+            width: 50%;
+            box-sizing: border-box;
+            padding-left: 25px;
+        }
+
+        .form-container form {
+            margin-top: 10px;
+        }
+
+        .message {
+            margin-top: 10px;
+            font-style: italic;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1>Welcome to OraAssets</h1>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="placard">
+            <p><strong>Oracle DB Connection Instructions:</strong></p>
+            <ul>
+                <li>Connection method 1: If connecting directly, just enter the required info.</li>
+                <li>Connection method 2: If connecting to a remote database.</li>
+                <li>You must connect with a user with "system" privileges.</li>
+                <li>Step 1: Using putty/MobaXterm/or other emulator, create a connection tunnel to the remote server where your Oracle db resides.</li>
+                <li>Step 2: Now just enter localhost for DB Host and fill in the rest.</li>
+            </ul>
+        </div>
+
+        <div class="form-container">
+            <form method="post" action="{% url 'oracle_state' %}">
+                {% csrf_token %}
+                <label for="host">Database Host:</label>
+                <input type="text" name="host" id="host" required><br>
+
+                <label for="port">Database Port:</label>
+                <input type="text" name="port" id="port" required><br>
+
+                <label for="service_name">Database Service Name:</label>
+                <input type="text" name="service_name" id="service_name" required><br>
+
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" required><br>
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required><br>
+                <input type="submit" value="Get Ora Assets">
+                <div class="message">This could take a few minutes,<br> it all depends on your Ora DB size.</div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
